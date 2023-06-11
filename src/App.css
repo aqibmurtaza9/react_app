@@ -1,0 +1,10 @@
+.App{
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-top: 20px;
+}
+
+.login-container{
+    width: 500px !important;  
+}
