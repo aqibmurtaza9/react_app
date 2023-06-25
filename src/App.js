@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import Login from './Component/UserAuth/Login';
 import  loginStore  from './Stores/LoginStore';
 import UserDetail from './Component/UserListing/UserDetail';
-import { useHistory } from 'react-router-dom';
 
-  class App extends Component { 
+class App extends Component { 
     constructor(props){
       super(props);
       
       this.state = {
         email : null,
-        password : null
+        password : null,
+        isAuthenticated : false
       }
     }
     
@@ -25,7 +25,7 @@ import { useHistory } from 'react-router-dom';
           console.log(response);
     
           if (response.message === "601") {
-            
+             window.location.href ="/userdetail";
           } else {
             alert(response.message);
           }
@@ -35,7 +35,11 @@ import { useHistory } from 'react-router-dom';
     render()
     {
       return <div>
-                  <Login submit={this.handlerLogin}/>
+        {this.isAuthenticated ? (
+          <Login submit={this.handlerLogin}/>
+        ) : (
+          <UserDetail />
+        )}
       </div> ;
     }
 }
