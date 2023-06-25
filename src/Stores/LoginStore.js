@@ -14,11 +14,7 @@ class LoginStore extends BaseStore {
             .then(r => {
                 return r;
             })
-        //   const response = axios.post("https://localhost:5001/Auth/login",{
-        //       Email : email,
-        //       Password : password
-        //   });
-        //   return response;
+      
     }
 }
 
