@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Login from './Component/UserAuth/Login';
 import  loginStore  from './Stores/LoginStore';
 import UserDetail from './Component/UserListing/UserDetail';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 class App extends Component { 
     constructor(props){
@@ -35,11 +36,19 @@ class App extends Component {
     render()
     {
       return <div>
-        {this.isAuthenticated ? (
+        <Router>
+
+        {/* {this.isAuthenticated ? (
           <Login submit={this.handlerLogin}/>
-        ) : (
-          <UserDetail />
-        )}
+          ) : (
+            <UserDetail />
+            )} */}
+            
+            <Routes>
+              <Route path='/' element={<Login/>} />
+              <Route path='/userdetail' element={<UserDetail/>} />
+            </Routes>
+        </Router>
       </div> ;
     }
 }
