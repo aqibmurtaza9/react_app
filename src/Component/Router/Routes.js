@@ -9,7 +9,6 @@ const Routes = () => {
       <Route exact path="/" component={Login} />
       <Route exact path="/userdetail" component={UserDetail} />
       {/* Redirect to login page for any other routes */}
-      
     </Router>
   );
 };

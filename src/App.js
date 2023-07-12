@@ -37,16 +37,12 @@ class App extends Component {
     {
       return <div>
         <Router>
-
-        {/* {this.isAuthenticated ? (
-          <Login submit={this.handlerLogin}/>
-          ) : (
-            <UserDetail />
-            )} */}
-            
             <Routes>
-              <Route path='/' element={<Login/>} />
-              <Route path='/userdetail' element={<UserDetail/>} />
+              {!this.state.isAuthenticated ? (
+                <Route path='/' element={<Login />} />
+              ) : (
+                <Route path='/userdetail' element={<UserDetail />} />
+              )}
             </Routes>
         </Router>
       </div> ;

@@ -1,52 +1,33 @@
 import axios from 'axios';
 
 const API_BASE_URL = 'https://localhost:44314';
+
 export default class BaseStore {
-  
+  constructor() {
+    axios.interceptors.request.use(
+      async (config) => {
+        //Need to change config.baseURL according to release (e.g for development, its Localhost)
+        config.baseURL = API_BASE_URL;
+        //debugger;
+        var token = localStorage.getItem("reactapp_token");
+        //console.log(token);
+
+        config.headers.authorization = "Bearer " + token;
+        config.headers.token = token;
+        //console.log(appState.state.token,"Token from appstate");
+
+        return config;
+      },
+
+      function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      }
+    );
+  }
   getBaseUrl(){
     return 'https://localhost:44314';
   }
-
-// --------------------------------------------  fetch
-//   makeGETRequest(url) {
-//       let basePath = this.getBaseUrl();
-//       url = basePath+url
-//       return fetch(url, {
-//           method: 'GET',
-//           mode: 'cors',
-//           cache: 'default'
-//       })
-//       .then(function(response) {
-//           return response.json()
-//       })
-//       .catch(function(ex) {
-//           alert("Error: "+ex);
-//           console.log("Error: "+ex);
-//       })
-//   }
-
-// makeHttpRequest(url, payload, httpMethod = 'POST') {
-//     let basePath = this.getBaseUrl();
-//     url = basePath+url
-//     var request = new Request(url, {
-//         method: httpMethod, 
-//         headers: new Headers({
-//             'Content-Type': 'application/json'
-//         }),
-//         mode: 'cors',
-//         cache: 'default',
-//         body: JSON.stringify(payload)
-//     });
-
-//     return fetch(request)
-//     .then(function(response) {
-//         return response.json()
-//     })
-//     .catch(function(ex) {
-//         alert("Error:"+ ex);
-//         console.log("Error: "+ex);
-//     })
-// }
 
 // ---------------------------------------axios
 makeGETRequest(url) {
