@@ -12,7 +12,7 @@ class Layout extends React.Component {
                     <LeftPanel/>
                 </div>
                 <div className="col">
-                    <div className="row" >
+                    <div className="row">
                         <Header/>
                     </div>
                     <div className="row" >
