@@ -2,8 +2,9 @@ import './App.css';
 import React, { Component } from 'react';
 import Login from './Component/UserAuth/Login';
 import  loginStore  from './Stores/LoginStore';
-import UserDetail from './Component/UserListing/UserDetail';
+import UserDetail from './Component/Content/UserListing/UserDetail';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 
 class App extends Component { 
     constructor(props){
@@ -23,10 +24,13 @@ class App extends Component {
     
       loginStore.authenticateUser(email, password)
         .then((response) => {
-          console.log(response);
-    
-          if (response.message === "601") {
-             window.location.href ="/userdetail";
+          console.log("App js : ",response.data);
+          
+          if (response.status === 200) {
+           this.setState({isAuthenticated : true});
+           if(this.state.isAuthenticated){
+              window.location.href ="/userdetail";
+           }
           } else {
             alert(response.message);
           }
@@ -35,14 +39,11 @@ class App extends Component {
 
     render()
     {
-      return <div>
+      return <div className="max-width: 100%">
         <Router>
             <Routes>
-              {!this.state.isAuthenticated ? (
-                <Route path='/' element={<Login />} />
-              ) : (
+                <Route path='/' element={<Login submit={this.handlerLogin}/>} />
                 <Route path='/userdetail' element={<UserDetail />} />
-              )}
             </Routes>
         </Router>
       </div> ;

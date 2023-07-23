@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+
 class UserDetail extends Component {
     constructor(props) {
         super(props);
@@ -7,6 +9,7 @@ class UserDetail extends Component {
     render() { 
         return ( <div>
             <h2>Welcome</h2>
+            
         </div> );
     }
 }

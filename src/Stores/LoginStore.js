@@ -10,7 +10,7 @@ class LoginStore extends BaseStore {
            Password : password
        });
 
-        return this.makeHttpRequest("/Auth/login", jsonData)
+        return this.makeHttpRequest("/auth/login", jsonData)
             .then(r => {
                 return r;
             })

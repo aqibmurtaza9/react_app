@@ -1,32 +1,32 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://localhost:44314';
+const API_BASE_URL = 'http://localhost:5208';
 
 export default class BaseStore {
-  constructor() {
-    axios.interceptors.request.use(
-      async (config) => {
-        //Need to change config.baseURL according to release (e.g for development, its Localhost)
-        config.baseURL = API_BASE_URL;
-        //debugger;
-        var token = localStorage.getItem("reactapp_token");
-        //console.log(token);
+  // constructor() {
+  //   axios.interceptors.request.use(
+  //     async (config) => {
+  //       //Need to change config.baseURL according to release (e.g for development, its Localhost)
+  //       config.baseURL = API_BASE_URL;
+  //       //debugger;
+  //       var token = localStorage.getItem("reactapp_token");
+  //       //console.log(token);
 
-        config.headers.authorization = "Bearer " + token;
-        config.headers.token = token;
-        //console.log(appState.state.token,"Token from appstate");
+  //       config.headers.authorization = "Bearer " + token;
+  //       config.headers.token = token;
+  //       //console.log(appState.state.token,"Token from appstate");
 
-        return config;
-      },
+  //       return config;
+  //     },
 
-      function (error) {
-        // Do something with request error
-        return Promise.reject(error);
-      }
-    );
-  }
+  //     function (error) {
+  //       // Do something with request error
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  // }
   getBaseUrl(){
-    return 'https://localhost:44314';
+    return 'http://localhost:5208';
   }
 
 // ---------------------------------------axios
@@ -57,7 +57,7 @@ makeGETRequest(url) {
     'Content-Type': 'application/json'
   }})
     .then(function(response) {
-      return response.data;
+      return response;
     })
     .catch(function(error) {
       alert("Error: "+error);
