@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header/Header.js';
 import Footer from './Footer/Footer.js';
 import LeftPanel from './LeftPanel/LeftPanel.js';
-
+import Content from './../Content/content.js'
 
 class Layout extends React.Component {
     render() { 
@@ -14,6 +14,9 @@ class Layout extends React.Component {
                 <div className="col">
                     <div className="row" >
                         <Header/>
+                    </div>
+                    <div className="row" >
+                        <Content/>
                     </div>
                     <div className="row">
                         <Footer/>
